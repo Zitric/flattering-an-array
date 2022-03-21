@@ -12,3 +12,12 @@ test('If the array is not an array, it should return an emtpy array', () => {
   expect(flatArray(5)).toEqual([]);
   expect(flatArray('hello world')).toEqual([]);
 });
+
+test('If we have nested arrays with different values, it should return a number sorted flatted array', () => {
+  expect(flatArray([1, , [2, [3]], , 'hello', 4])).toEqual([1, 2, 3, 4]);
+  expect(flatArray([[], [], [2, [3]], , 5, 'hello', 4])).toEqual([2, 3, 4, 5]);
+  expect(flatArray([99, , [[2, [3]]], , 'hello', 4])).toEqual([2, 3, 4, 99]);
+  expect(flatArray([1, [8, 6, 3], [2, [3]], , 'hello', 4])).toEqual([
+    1, 2, 3, 3, 4, 6, 8,
+  ]);
+});
